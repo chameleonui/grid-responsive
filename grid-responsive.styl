@@ -1,0 +1,155 @@
+// =============================================================================
+// Mobile first Grid
+// =============================================================================
+// Inspired by Zurb's Foundation 5
+
+// Use flags
+// =============================================================================
+use-grid-tiles ?= true;
+use-grid-debug ?= false;
+
+// Variables
+// =============================================================================
+grid-columns-count ?= 12;
+grid-row-width ?= 80em;
+grid-row-max-width ?= 100%;
+grid-gutter-width ?= 1.875em;
+
+grid-row-class ?= "row";
+grid-row-tabular-class ?= "row-tabular";
+grid-column-class ?= "column";
+
+grid-span-class ?= "span";
+grid-hand-class ?= "hand";
+grid-hand-up-class ?= "hand-up";
+grid-hand-down-class ?= "hand-down";
+grid-lap-class ?= "lap";
+grid-lap-up-class ?= "lap-up";
+grid-lap-down-class ?= "lap-down";
+grid-desk-class ?= "desk";
+grid-desk-up-class ?= "desk-up";
+grid-desk-down-class ?= "desk-down";
+
+grid-offset-class ?= "offset";
+grid-pull-class ?= "pull";
+grid-push-class ?= "push";
+grid-centered-class ?= "centered";
+grid-uncentered-class ?= "uncentered";
+grid-show-class ?= "show";
+grid-hide-class ?= "hide";
+
+// We can't use body-em() here due to stylus limits :(
+grid-lap-start ?= 48em; 
+grid-desk-start ?= 76.25em;
+
+grid-hand-up-media ?= "only screen";
+grid-hand-media ?= "only screen and (max-width: " + grid-lap-start +")";
+grid-lap-up-media ?= "only screen and (min-width: " + grid-lap-start + ")";
+grid-lap-media ?= "only screen and (min-width: " + grid-lap-start + ") and (max-width: " + grid-desk-start + ")";
+grid-lap-down-media ?= "only screen and (max-width: " + grid-desk-start + ")";
+grid-desk-up-media ?= "only screen and (min-width: " + grid-desk-start + ")";
+grid-desk-media ?= $desk-up-media;
+grid-desk-down-media ?= "only screen";
+
+grid-debug-bg-color ?= rgba(#777, .15);
+grid-debug-class ?= "grid-debug";
+
+grid-tiles-class ?= "tiles";
+grid-tiles-columns-from = 2;
+grid-tiles-columns-to = 12;
+
+// Mixins
+// =============================================================================
+grid-responsive() {
+    grid-row(grid-row-class, grid-row-width, grid-row-max-width, grid-gutter-width);
+    grid-column(grid-column-class, grid-gutter-width);
+
+    // Hand'n'up
+    @media grid-hand-up-media {
+        prefix = grid-hand-class + "-";
+        grid-column-span(grid-hand-class, grid-columns-count);
+        grid-column-offset(prefix + grid-offset-class, grid-columns-count);
+        grid-column-pull(prefix + grid-pull-class, grid-columns-count);
+        grid-column-push(prefix + grid-push-class, grid-columns-count);
+        grid-column-centered(grid-column-class, prefix + grid-centered-class);
+
+        if (use-grid-tiles) {
+            [class*={'"' + prefix + grid-tiles-class + '"'}] { 
+                block-grid(false, grid-gutter-width);
+            }
+
+            for i in grid-tiles-columns-from..grid-tiles-columns-to {
+                .{prefix + grid-tiles-class}-{(i)} {
+                    block-grid(i, grid-gutter-width, false);
+                }
+            }
+        }
+
+        show = (grid-hand-class grid-hand-up-class grid-desk-down-class grid-lap-down-class grid-hand-down-class); 
+        hide = (grid-lap-class grid-lap-up-class grid-desk-class grid-desk-up-class);
+        grid-visibility(show, hide, grid-show-class);
+        grid-visibility(hide, show, grid-hide-class);
+    }
+
+    // Lap'n'up
+    @media grid-lap-up-media {
+        grid-row-tabular(grid-row-tabular-class, grid-column-class);
+
+        prefix = grid-lap-class + "-";
+        grid-column-span(grid-lap-class, grid-columns-count);
+        grid-column-offset(prefix + grid-offset-class, grid-columns-count);
+        grid-column-pull(prefix + grid-pull-class, grid-columns-count);
+        grid-column-push(prefix + grid-push-class, grid-columns-count);
+        grid-column-centered(grid-column-class, prefix + grid-centered-class);
+        grid-column-uncentered(grid-column-class, prefix + grid-uncentered-class);
+
+        if (use-grid-tiles) {
+            [class*={'"' + prefix + grid-tiles-class + '"'}] { 
+                block-grid(false, grid-gutter-width);
+            }
+
+            for i in grid-tiles-columns-from..grid-tiles-columns-to {
+                .{prefix + grid-tiles-class}-{(i)} {
+                    block-grid(i, grid-gutter-width, false);
+                }
+            }
+        }
+
+        show = (grid-lap-class grid-hand-up-class-class grid-lap-up-class grid-desk-down-class grid-lap-down-class); 
+        hide = (grid-hand-class grid-desk-class grid-desk-up-class grid-hand-down-class);
+        grid-visibility(show, hide, grid-show-class);
+        grid-visibility(hide, show, grid-hide-class);
+    }
+
+    // Desk'n'up
+    @media grid-desk-up-media {
+        prefix = grid-desk-class + "-";
+        grid-column-span(grid-desk-class, grid-columns-count);
+        grid-column-offset(prefix + grid-offset-class, grid-columns-count);
+        grid-column-pull(prefix + grid-pull-class, grid-columns-count);
+        grid-column-push(prefix + grid-push-class, grid-columns-count);
+        grid-column-centered(grid-column-class, prefix + grid-centered-class);
+        grid-column-uncentered(grid-column-class, prefix + grid-uncentered-class);
+
+        if (use-grid-tiles) {
+            [class*={'"' + prefix + grid-tiles-class + '"'}] { 
+                block-grid(false, grid-gutter-width);
+            }
+
+            for i in grid-tiles-columns-from..grid-tiles-columns-to {
+                .{prefix + grid-tiles-class}-{(i)} {
+                    block-grid(i, grid-gutter-width, false);
+                }
+            }
+        }
+
+        show = (grid-desk-class grid-hand-up-class grid-lap-up-class grid-desk-up-class grid-desk-down-class); 
+        hide = (grid-hand-class grid-lap-class grid-lap-down-class grid-hand-down-class);
+        grid-visibility(show, hide, grid-show-class);
+        grid-visibility(hide, show, grid-hide-class);
+    }
+
+    if (use-grid-debug) {
+        grid-debug(grid-debug-bg-color, grid-debug-class, grid-row-class, grid-column-class, grid-tiles-class);
+    }
+}
