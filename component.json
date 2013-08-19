@@ -2,7 +2,7 @@
   "name": "grid",
   "repo": "chameleonui/grid-responsive",
   "description": "Responsive grid inspired by Zurb Foundation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "keywords": [],
   "dependencies": {
     "chameleonui/utils": "*",
@@ -12,5 +12,8 @@
   "license": "MIT",
   "styles": [
     "grid-responsive.styl"
+  ],
+  "files": [
+    "respond.min.js"
   ]
 }
