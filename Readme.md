@@ -16,8 +16,10 @@ Install with [component](https://github.com/component/component):
 You can disable or enable grid features through use-flags:
 
 ```
-// Debug is disabled by default
+// Debug and grid-fixed are disabled by default
 use-grid-tiles = true|false;
+use-grid-responsive = true|flase;
+use-grid-fixed = false|true;
 use-grid-debug = false|true;
 ```
 
@@ -29,6 +31,7 @@ grid-row-max-width = 100%;
 grid-gutter-width = 1.875em;
 
 grid-row-class = "row";
+grid-row-fixed-class = "row-fixed";
 grid-row-tabular-class = "row-tabular";
 grid-column-class = "column";
 

@@ -2,3 +2,4 @@ components
 build
 node_modules
 example.css
+example-fixed.css
