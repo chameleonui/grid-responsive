@@ -103,6 +103,8 @@ grid-responsive() {
         // Hand'n'up
         @media grid-hand-up-media {
             prefix = grid-hand-class + "-";
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+
             grid-column-span(grid-hand-class, grid-columns-count);
             grid-column-offset(prefix + grid-offset-class, grid-columns-count);
             grid-column-pull(prefix + grid-pull-class, grid-columns-count);
@@ -129,6 +131,8 @@ grid-responsive() {
         // Lap'n'up
         @media grid-lap-up-media {
             prefix = grid-lap-class + "-";
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+
             grid-column-span(grid-lap-class, grid-columns-count);
             grid-column-offset(prefix + grid-offset-class, grid-columns-count);
             grid-column-pull(prefix + grid-pull-class, grid-columns-count);
@@ -156,6 +160,8 @@ grid-responsive() {
         // Desk'n'up
         @media grid-desk-up-media {
             prefix = grid-desk-class + "-";
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+            
             grid-column-span(grid-desk-class, grid-columns-count);
             grid-column-offset(prefix + grid-offset-class, grid-columns-count);
             grid-column-pull(prefix + grid-pull-class, grid-columns-count);

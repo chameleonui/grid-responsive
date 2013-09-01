@@ -1,3 +1,7 @@
+### v1.4.0
+
+- Tabular Row can be enabled for hand/lap/desk only
+
 ### v1.3.0
 
 - Visibility flags simplified to hand/lap/desk-hide classes only
