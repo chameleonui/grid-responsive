@@ -1,3 +1,7 @@
+### v1.3.0
+
+- Visibility flags simplified to hand/lap/desk-hide classes only
+
 ### v1.2.0
 
 - Added fixed grid and options to enable/disable fixed/responsive grid

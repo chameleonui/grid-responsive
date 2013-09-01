@@ -51,7 +51,7 @@ grid-lap-up-media ?= "only screen and (min-width: " + grid-lap-start + ")";
 grid-lap-media ?= "only screen and (min-width: " + grid-lap-start + ") and (max-width: " + grid-desk-start + ")";
 grid-lap-down-media ?= "only screen and (max-width: " + grid-desk-start + ")";
 grid-desk-up-media ?= "only screen and (min-width: " + grid-desk-start + ")";
-grid-desk-media ?= $desk-up-media;
+grid-desk-media ?= grid-desk-up-media;
 grid-desk-down-media ?= "only screen";
 
 grid-debug-bg-color ?= rgba(#777, .15);
@@ -120,11 +120,10 @@ grid-responsive() {
                     }
                 }
             }
+        }
 
-            show = (grid-hand-class grid-hand-up-class grid-desk-down-class grid-lap-down-class grid-hand-down-class); 
-            hide = (grid-lap-class grid-lap-up-class grid-desk-class grid-desk-up-class);
-            grid-visibility(show, hide, grid-show-class);
-            grid-visibility(hide, show, grid-hide-class);
+        @media grid-hand-media {
+            grid-visibility-hide(grid-hand-class, grid-hide-class);
         }
 
         // Lap'n'up
@@ -148,11 +147,10 @@ grid-responsive() {
                     }
                 }
             }
+        }
 
-            show = (grid-lap-class grid-hand-up-class-class grid-lap-up-class grid-desk-down-class grid-lap-down-class); 
-            hide = (grid-hand-class grid-desk-class grid-desk-up-class grid-hand-down-class);
-            grid-visibility(show, hide, grid-show-class);
-            grid-visibility(hide, show, grid-hide-class);
+        @media grid-lap-media {
+            grid-visibility-hide(grid-lap-class, grid-hide-class);
         }
 
         // Desk'n'up
@@ -176,11 +174,10 @@ grid-responsive() {
                     }
                 }
             }
+        }
 
-            show = (grid-desk-class grid-hand-up-class grid-lap-up-class grid-desk-up-class grid-desk-down-class); 
-            hide = (grid-hand-class grid-lap-class grid-lap-down-class grid-hand-down-class);
-            grid-visibility(show, hide, grid-show-class);
-            grid-visibility(hide, show, grid-hide-class);
+        @media grid-desk-media {
+            grid-visibility-hide(grid-desk-class, grid-hide-class);
         }
     }
 
