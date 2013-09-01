@@ -1,3 +1,8 @@
+### v1.4.3
+
+- Fixed tabular grid
+- Added max width to tabular row
+
 ### v1.4.0
 
 - Tabular Row can be enabled for hand/lap/desk only

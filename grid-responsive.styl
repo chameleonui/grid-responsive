@@ -76,7 +76,7 @@ grid-responsive() {
     // Universal columns
     if (use-grid-responsive || use-grid-fixed) {
         grid-column(grid-column-class, grid-gutter-width);
-        grid-row-tabular(grid-row-tabular-class, grid-column-class);
+        grid-row-tabular(grid-row-tabular-class, grid-column-class, grid-row-width);
     }
     // Fixed grid    
     if (use-grid-fixed) {
@@ -124,7 +124,7 @@ grid-responsive() {
 
         @media grid-hand-media {
             prefix = grid-hand-class + "-";
-            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class, grid-row-width);
             grid-visibility-hide(grid-hand-class, grid-hide-class);
         }
 
@@ -153,7 +153,7 @@ grid-responsive() {
 
         @media grid-lap-media {
             prefix = grid-lap-class + "-";
-            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class, grid-row-width);
             grid-visibility-hide(grid-lap-class, grid-hide-class);
         }
 
@@ -182,7 +182,7 @@ grid-responsive() {
 
         @media grid-desk-media {
             prefix = grid-desk-class + "-";
-            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class);
+            grid-row-tabular(prefix + grid-row-tabular-class, grid-column-class, grid-row-width);
             grid-visibility-hide(grid-desk-class, grid-hide-class);
         }
     }
