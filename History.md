@@ -1,3 +1,7 @@
+### v1.4.5
+
+- added 1px (0.0625em @ 16px) difference to media queries to fix min - max range query bug with overlayping queries
+
 ### v1.4.4
 
 - changed `grid-desk-start` to 64em

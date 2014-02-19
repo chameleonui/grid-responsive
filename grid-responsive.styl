@@ -14,7 +14,7 @@ use-grid-debug ?= false;
 // =============================================================================
 grid-columns-count ?= 12;
 grid-gutter-width ?= 1.875em;
-grid-row-width ?= 62.376em;
+grid-row-width ?= 62em;
 grid-row-max-width ?= 100%;
 
 grid-row-class ?= "row";
@@ -42,15 +42,21 @@ grid-show-class ?= "show";
 grid-hide-class ?= "hide";
 
 // We can't use body-em() here due to stylus limits :(
-grid-lap-start ?= 40em; 
-grid-desk-start ?= 64em;
+// old variables
+// grid-lap-start ?= 40em;
+// grid-desk-start ?= 64em;
+
+grid-lap-start-max ?= 40em; 
+grid-lap-start-min ?= 40.0625em; 
+grid-desk-start-max ?= 64em;
+grid-desk-start-min ?= 64.0625em;
 
 grid-hand-up-media ?= "only screen";
-grid-hand-media ?= "only screen and (max-width: " + grid-lap-start +")";
-grid-lap-up-media ?= "only screen and (min-width: " + grid-lap-start + ")";
-grid-lap-media ?= "only screen and (min-width: " + grid-lap-start + ") and (max-width: " + grid-desk-start + ")";
-grid-lap-down-media ?= "only screen and (max-width: " + grid-desk-start + ")";
-grid-desk-up-media ?= "only screen and (min-width: " + grid-desk-start + ")";
+grid-hand-media ?= "only screen and (max-width: " + grid-lap-start-max +")";
+grid-lap-up-media ?= "only screen and (min-width: " + grid-lap-start-min + ")";
+grid-lap-media ?= "only screen and (min-width: " + grid-lap-start-min + ") and (max-width: " + grid-desk-start-max + ")";
+grid-lap-down-media ?= "only screen and (max-width: " + grid-desk-start-max + ")";
+grid-desk-up-media ?= "only screen and (min-width: " + grid-desk-start-min + ")";
 grid-desk-media ?= grid-desk-up-media;
 grid-desk-down-media ?= "only screen";
 
